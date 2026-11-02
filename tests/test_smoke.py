@@ -1,4 +1,7 @@
-"""Offline smoke test for exploratory corpus analysis."""
+"""Offline smoke test for exploratory corpus analysis.
+Author: Kevin Hennelly
+Date: 2026-11
+"""
 
 import runpy
 
