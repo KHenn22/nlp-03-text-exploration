@@ -13,7 +13,7 @@
 
 ## Project Overview
 
-Author: Denise Case
+Author: Kevin Hennelly
 
 Date: 2026 October
 
@@ -32,6 +32,10 @@ language representations and embeddings.
 
 The project is configured in
 [pyproject.toml](pyproject.toml).
+
+## Planned Customization
+
+I plan to customize this project by exploring aviation safety reports (most likely ficticious at this stage) using NLP.  This project will focus on indetifying frequently used words and commmon word pairs used in aviation safety narratives.  The intent is that this will help demonstrate how text analysis can identify recurring safety concerns and patterns.
 
 ## Data
 
@@ -125,7 +129,7 @@ uv run python -m pytest
 
 ## Project Documentation
 
-The [hosted documentation site](https://denisecase.github.io/nlp-03-text-exploration/)
+The [hosted documentation site](https://github.io/KHenn22/nlp-03-text-exploration/)
 is published using Zensical and GitHub Pages.
 
 The documentation site is used to present the project report,
@@ -139,8 +143,8 @@ to check project files and publish the docs.
 
 GitHub Actions include:
 
-- [CI: Python and Documentation Checks](https://github.com/denisecase/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml)
-- [CD: Documentation Deployment](https://github.com/denisecase/nlp-03-text-exploration/actions/workflows/deploy-zensical.yml)
+- [CI: Python and Documentation Checks](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml)
+- [CD: Documentation Deployment](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/deploy-zensical.yml)
 
 ## Developer Reference
 
