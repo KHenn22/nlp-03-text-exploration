@@ -1,161 +1,94 @@
 # nlp-03-text-exploration
 
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](pyproject.toml)
-[![CI](https://github.com/denisecase/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml/badge.svg)](https://github.com/denisecase/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml)
+[![CI](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml/badge.svg)](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml)
 [![Documentation](https://img.shields.io/badge/docs-site-blue?logo=github)](https://denisecase.github.io/nlp-03-text-exploration/)
-
 [![uv managed](https://img.shields.io/badge/uv-managed-DE5FE9)](https://docs.astral.sh/uv/)
 [![ty type checked](https://img.shields.io/badge/ty-type_checked-2F80ED)](https://docs.astral.sh/ty/)
-[![Zensical docs](https://img.shields.io/badge/Zensical-docs-purple)](https://zensical.org/)
 [![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-> Explore text corpora using token frequencies, categories, and contextual patterns.
+> Exploratory text analysis using a small labeled corpus to reveal frequencies, category patterns, and word context.
 
-## Project Overview
+## Overview
 
-Author: Kevin Hennelly
+This project is the third assignment in the Web Mining and Applied NLP course. It shows how to perform exploratory data analysis on a text corpus before moving into more advanced NLP techniques such as embeddings or model-based pipelines.
 
-Date: 2026 November
+The main script builds a simple corpus of short texts, cleans and tokenizes the text, and then measures how words and word pairs differ across categories.
 
-Third project in the Web Mining and Applied NLP course.
+## What the project demonstrates
 
-This project introduces exploratory text analysis.
+- A document corpus with category labels
+- Tokenization and punctuation cleanup
+- Global token frequency counts
+- Category-by-category comparison of vocabulary
+- Top tokens per category
+- Bigram creation and co-occurrence analysis
+- Basic plotting and logging for result inspection
 
-The goal is to examine a collection of text documents,
-identify patterns in vocabulary,
-compare categories,
-and explore relationships between words.
+## Repository layout
 
-These techniques provide foundations for understanding
-more advanced NLP methods, including
-language representations and embeddings.
+- [src/nlp/nlp_corpus_explore.py](src/nlp/nlp_corpus_explore.py) - main exploratory analysis script
+- [src/nlp/nlp_corpus_explore_modification.py](src/nlp/nlp_corpus_explore_modification.py) - alternate version of the analysis workflow
+- [notebooks/aviation_safety_analysis.ipynb](notebooks/aviation_safety_analysis.ipynb) - custom aviation safety analysis notebook
+- [notebooks/nlp_corpus_explore_modification.ipynb](notebooks/nlp_corpus_explore_modification.ipynb) - notebook version of the exploratory workflow
+- [tests/test_smoke.py](tests/test_smoke.py) - smoke test for the core behavior
+- [docs/](docs/) - documentation and project report content
+- [.github/workflows/](.github/workflows/) - CI and documentation automation
+- [pyproject.toml](pyproject.toml) - project metadata and Python dependencies
+- [zensical.toml](zensical.toml) - documentation site configuration
 
-The project is configured in
-[pyproject.toml](pyproject.toml).
+## Dataset
 
-## Planned Customization
+The analysis uses a small, controlled corpus defined directly in the Python script. It contains 22 short documents distributed across four categories:
 
-I plan to customize this project by exploring aviation safety reports (most likely ficticious at this stage) using NLP.  This project will focus on indetifying frequently used words and commmon word pairs used in aviation safety narratives.  The intent is that this will help demonstrate how text analysis can identify recurring safety concerns and patterns.
+- Dog
+- Cat
+- Car
+- Truck
 
-## Data
+Each document includes a category label and short text that reflects the topic. No external dataset or network access is required.
 
-The example uses a small, controlled text corpus
-defined directly in the Python script.
+## Quick start
 
-The corpus contains 22 short documents
-organized into four categories:
-
-- Dogs.
-- Cats.
-- Cars.
-- Trucks.
-
-Each document includes a category label
-and a short text passage.
-
-No external input dataset or web connection is required.
-
-## Approach
-
-The project uses Python and Polars
-to explore patterns in a labeled text corpus.
-
-The example demonstrates:
-
-- Representing a collection of documents as a corpus.
-- Tokenizing and cleaning text.
-- Computing global token frequencies.
-- Comparing token frequencies across categories.
-- Identifying frequently occurring words within categories.
-- Examining word co-occurrence using context windows.
-- Creating and counting bigrams.
-- Visualizing and interpreting token distributions.
-
-Explore these important project components:
-
-- [pyproject.toml](pyproject.toml) - project identity, dependencies, and tool configuration.
-- [src/nlp/nlp_corpus_explore.py](src/nlp/nlp_corpus_explore.py) - executable Python corpus analysis.
-- [tests/](tests/) - automated tests.
-- [.github/workflows/](.github/workflows/) - automated testing and documentation deployment.
-- [docs/](docs/) - project documentation.
-- [zensical.toml](zensical.toml) - documentation configuration.
-
-The goal is to observe structure in text
-before applying machine learning or language models.
-
-## Run the Project
-
-Follow the [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
-to set up your machine and project environment.
-
-From a VS Code terminal in the project root:
+From the project root, install dependencies and run the project:
 
 ```shell
+uv sync
 uv run python -m nlp.nlp_corpus_explore
 ```
 
-Close each visualization window after viewing
-so the script can continue executing.
+The script prints summary tables for the token distribution, category comparisons, top tokens, and co-occurrence patterns. If you run it in a local terminal, close any matplotlib windows after viewing them so the script can continue.
 
-## Results
+## Validation
 
-The analysis produces frequency distributions,
-category comparisons, co-occurrence information,
-and bigram frequencies.
-
-The results demonstrate how vocabulary and
-word proximity reveal patterns within a corpus.
-
-Successful execution produces:
-
-```shell
-========================
-Pipeline executed successfully!
-========================
-```
-
-A `project.log` file is created in the project root.
-
-This confirms that the Python analysis executes
-and the logging system works.
-
-## Verification
-
-Run the automated tests:
+Run the automated smoke test:
 
 ```shell
 uv run python -m pytest
 ```
 
-## Project Documentation
+## Results
 
-The [hosted documentation site](https://github.io/KHenn22/nlp-03-text-exploration/)
-is published using Zensical and GitHub Pages.
+The analysis produces counts such as:
 
-The documentation site is used to present the project report,
-covering such sections as data, methods, results, visualizations,
-interpretation, and conclusions.
+- global token frequencies
+- top tokens by category
+- co-occurrence context data
+- bigram frequencies
 
-## CI/CD and GitHub Actions
+These outputs help reveal patterns in vocabulary and word proximity before introducing machine learning or language models.
 
-This project includes continuous integration and continuous deployment (CI/CD)
-to check project files and publish the docs.
+## Documentation and automation
 
-GitHub Actions include:
+This repository includes a hosted documentation site and CI automation:
 
-- [CI: Python and Documentation Checks](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml)
-- [CD: Documentation Deployment](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/deploy-zensical.yml)
+- [Hosted documentation](https://denisecase.github.io/nlp-03-text-exploration/)
+- [CI workflow](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml)
+- [Documentation deployment workflow](https://github.com/KHenn22/nlp-03-text-exploration/actions/workflows/deploy-zensical.yml)
 
-## Developer Reference
+## Development notes
 
-Follow the
-[Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
-for **detailed instructions and troubleshooting**.
-
-### Initialize and Update the Python Environment
-
-With the project open in VS Code, open a VS Code terminal.
-Paste each command and hit Enter or Return after to run it.
+These commands are useful during development:
 
 ```shell
 uvx pup-clean --delete
@@ -167,69 +100,19 @@ uv sync
 uv audit
 ```
 
-### Set Up and Run Git Hooks
-
-Set up and run the git hooks to perform
-basic checks automatically before
-any changes get pushed to GitHub.
-
-In the VS Code terminal,
-paste each command and hit Enter or Return after to run it.
-
-```shell
-uvx prek install --force
-uvx prek update --freeze --cooldown-days 7
-
-git add -A
-uvx prek run --all-files
-# repeat if changes were made
-uvx prek run --all-files
-```
-
-### Run Common Chores
-
-Run linters, formatters, type checks, tests, and
-build the documentation.
+Run linting, formatting, type checking, and tests:
 
 ```shell
 uv run ruff check . --fix
 uv run ruff format .
-
 uv run ty check
 uv run python -m pytest
-uv run python -m zensical build
 ```
 
-### Git add-commit-push to GitHub
+## License
 
-After making useful changes, save your work to GitHub.
+This project is released under the [MIT License](LICENSE).
 
-```shell
-git add -A
-git commit -m "describe your changes in quotes"
-git push -u origin main
-```
+## Citation
 
-## Developer Notes
-
-- Use the **UP ARROW** and **DOWN ARROW** in the terminal to scroll through past commands.
-- Use `CTRL+f` to find (and replace) text within a file.
-
-## Developer Tools
-
-This project uses professional Python tools to support development,
-testing, documentation, and code quality.
-
-- [uv](https://docs.astral.sh/uv/) - Python environments and dependencies.
-- [Ruff](https://docs.astral.sh/ruff/) - Python linting and formatting, configured in [.ruff.toml](.ruff.toml).
-- [ty](https://docs.astral.sh/ty/) - Python type checking.
-- [pytest](https://docs.pytest.org/) - automated Python testing, configured in [.pytest.toml](.pytest.toml).
-- [prek](https://prek.j178.dev/) - Git hooks and automated checks, configured in [prek.toml](prek.toml).
-- [Zensical](https://zensical.org/) - project documentation, configured in [zensical.toml](zensical.toml).
-
-## Links
-
-- [Hosted Documentation](https://denisecase.github.io/nlp-03-text-exploration/)
-- [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
-- [Citation](CITATION.cff)
-- [License](LICENSE)
+See [CITATION.cff](CITATION.cff) for citation metadata.
